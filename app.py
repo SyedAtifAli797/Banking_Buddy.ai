@@ -8,7 +8,7 @@ from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 from langchain_groq import ChatGroq
 
-
+a=6
 st.set_page_config(page_icon="💰", page_title="BankingBuddy.ai", layout="centered")
 
 # Inject custom CSS for animations and styling
