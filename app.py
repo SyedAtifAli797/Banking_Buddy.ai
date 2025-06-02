@@ -192,7 +192,7 @@ Maintain a respectful and professional tone. Keep responses clear, concise, and 
                 st.error("Failed to load vectorstore.")
 
             qa_chain = RetrievalQA.from_chain_type(
-                llm=load_llm(GROQ_API_KEY=GROQ_API_KEY),
+                llm=load_llm(GROQ_API_KEY=st.secrets["GROQ_API_KEY"]),
                 chain_type="stuff",
                 retriever=vectorstore.as_retriever(search_kwargs={"k": 3}),
                 return_source_documents=True,
