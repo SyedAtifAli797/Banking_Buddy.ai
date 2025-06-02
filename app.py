@@ -128,6 +128,8 @@ def get_vectorstore():
 def set_custom_prompt(template):
     return PromptTemplate(template=template, input_variables=["context", "question"])
 
+GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
+
 def load_llm(GROQ_API_KEY, model_name="llama3-70b-8192"):
     return ChatGroq(api_key=GROQ_API_KEY, model_name=model_name, temperature=0.9, max_tokens=512)
 
@@ -190,7 +192,7 @@ Maintain a respectful and professional tone. Keep responses clear, concise, and 
                 st.error("Failed to load vectorstore.")
 
             qa_chain = RetrievalQA.from_chain_type(
-                llm=load_llm(GROQ_API_KEY="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"),
+                llm=load_llm(GROQ_API_KEY=GROQ_API_KEY),
                 chain_type="stuff",
                 retriever=vectorstore.as_retriever(search_kwargs={"k": 3}),
                 return_source_documents=True,
